@@ -341,7 +341,7 @@ if(LEVELDB_INSTALL)
   # Headers:
   #   * include/leveldb/db.h -> <prefix>/include/leveldb/db.h
   install(
-      DIRECTORY "include"
+      DIRECTORY "include/leveldb"
       DESTINATION "${include_install_dir}"
       FILES_MATCHING PATTERN "*.h"
   )
