@@ -1,0 +1,13 @@
+@PACKAGE_INIT@
+
+foreach(dep @deps@)
+  if(dep STREQUAL "Threads")
+    find_package(${dep} REQUIRED)
+  else()
+    find_package(${dep} CONFIG REQUIRED)
+  endif()
+endforeach()
+
+check_required_components("@PROJECT_NAME@")
+
+include("${CMAKE_CURRENT_LIST_DIR}/@TARGETS_EXPORT_NAME@.cmake")
