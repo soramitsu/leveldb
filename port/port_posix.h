@@ -7,17 +7,7 @@
 #ifndef STORAGE_LEVELDB_PORT_PORT_POSIX_H_
 #define STORAGE_LEVELDB_PORT_PORT_POSIX_H_
 
-// port/port_config.h availability is automatically detected via __has_include
-// in newer compilers. If LEVELDB_HAS_CONFIG_H is defined, it overrides the
-// configuration detection in older compilers.
-#if defined(LEVELDB_HAS_PORT_CONFIG_H)
 #include "port/port_config.h"
-#endif  // defined(LEVELDB_HAS_PORT_CONFIG_H)
-#if defined(__has_include)
-#if __has_include("port/port_config.h")
-#include "port/port_config.h"
-#endif  // __has_include("port/port_config.h")
-#endif  // defined(__has_include)
 
 #include <pthread.h>
 #if HAVE_SNAPPY
@@ -26,15 +16,6 @@
 #include <stdint.h>
 #include <string>
 #include "port/atomic_pointer.h"
-
-#if defined(OS_MACOSX) || defined(OS_SOLARIS) || defined(OS_FREEBSD) ||\
-    defined(OS_NETBSD) || defined(OS_OPENBSD) || defined(OS_DRAGONFLYBSD) ||\
-    defined(OS_ANDROID) || defined(OS_HPUX) || defined(CYGWIN)
-// Use fread/fwrite/fflush on platforms without _unlocked variants
-#define fread_unlocked fread
-#define fwrite_unlocked fwrite
-#define fflush_unlocked fflush
-#endif
 
 #if !HAVE_FDATASYNC
 // Use fsync() on platforms without fdatasync()
