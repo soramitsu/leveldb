@@ -4,11 +4,11 @@
 
 cmake_minimum_required(VERSION 3.9)
 
-option(HUNTER_ENABLED "Enable Hunter package manager" OFF)
+option(HUNTER_ENABLED "Enable Hunter package manager" ON)
 include(cmake/HunterGate.cmake)
 HunterGate(
-    URL "https://github.com/ruslo/hunter/archive/v0.23.177.tar.gz"
-    SHA1 "c3d4bf987a1c5f8ce9bb8b2b80bc6c123185cd66"
+    URL  https://github.com/soramitsu/soramitsu-hunter/archive/058933ca6648998d7473d82a3e428d45965e8e66.tar.gz
+    SHA1 aaf31324479ee480b2abeda7e346167b2ea87e96
 )
 
 # Keep the version below in sync with the one in db.h
@@ -32,8 +32,8 @@ else (WIN32)
   set(LEVELDB_PLATFORM_NAME LEVELDB_PLATFORM_POSIX)
 endif (WIN32)
 
-option(LEVELDB_BUILD_TESTS "Build LevelDB's unit tests" ON)
-option(LEVELDB_BUILD_BENCHMARKS "Build LevelDB's benchmarks" ON)
+option(LEVELDB_BUILD_TESTS "Build LevelDB's unit tests" OFF)
+option(LEVELDB_BUILD_BENCHMARKS "Build LevelDB's benchmarks" OFF)
 option(LEVELDB_INSTALL "Install LevelDB's header and library" ON)
 
 include(TestBigEndian)
